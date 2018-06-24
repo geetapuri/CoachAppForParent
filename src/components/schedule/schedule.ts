@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AddScheduleComponent } from '../add-schedule/add-schedule';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { GetDataFromSpringProvider} from '../../providers/get-data-from-spring/get-data-from-spring';
 import { EditScheduleDetailsComponent } from '../edit-schedule-details/edit-schedule-details';
 /**
@@ -22,10 +22,12 @@ export class ScheduleComponent {
   public selectedGroup;
   public selectedKid;
   public kidsList;
+  public parent;
 
-  constructor(private springData: GetDataFromSpringProvider, public navCtrl: NavController, ) {
+  constructor(private springData: GetDataFromSpringProvider, public navCtrl: NavController, public navParams: NavParams) {
     console.log('Hello ScheduleComponent Component');
     this.text = 'Hello World Schedule Component';
+    this.parent = this.navParams.get('parent');
   }
 
   public onItemSelection(selection){
@@ -37,7 +39,7 @@ export class ScheduleComponent {
   }
 
   getKids(){
-    this.springData.getKidInfoParent().subscribe(
+    this.springData.getKidInfoParent(parent).subscribe(
       data => {
 
         this.kidsList= data.kidList;

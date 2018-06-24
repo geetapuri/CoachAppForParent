@@ -38,7 +38,7 @@ export class MarkAttendanceComponent implements OnInit{
   public kidsList;
   checkedItems:boolean[];
 
-  constructor(private springData: GetDataFromSpringProvider,public navCtrl: NavController) {
+  constructor(private springData: GetDataFromSpringProvider,public navCtrl: NavController, public navParams: NavParams) {
     console.log('Hello MarkAttendanceComponent Component');
     this.text = 'Hello World of Mark Attendance';
   }

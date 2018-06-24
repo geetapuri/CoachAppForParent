@@ -20,10 +20,12 @@ export class AttendanceComponent {
 
   public selectedKid;
   public attendanceList;
+  public parent;
 
-  constructor(private springData: GetDataFromSpringProvider,public navCtrl: NavController ) {
+  constructor(private springData: GetDataFromSpringProvider,public navCtrl: NavController, public navParams: NavParams ) {
     console.log('Hello AttendanceComponent Component');
     this.text = 'Hello World';
+    this.parent= this.navParams.get('parent');
 
 
   }
@@ -33,7 +35,7 @@ export class AttendanceComponent {
   getKids(){
     //Get Kids list in a dropdown
     console.log("in getKids");
-    this.springData.getKidInfoParent().subscribe(
+    this.springData.getKidInfoParent(this.parent).subscribe(
       data => {
 
         this.kidsList= data.kidList;

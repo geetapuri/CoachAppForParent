@@ -298,15 +298,16 @@ export class GetDataFromSpringProvider {
 
   }
 
-  getKidInfoParent(){
+  getKidInfoParent(parent){
     console.log("In get Kids Info");
     let headers = new Headers ({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let body = {
-      'parentID': '2'
+      'parentID': parent[0].parentID
     }
     headers.append('Access-Control-Allow-Origin' , '*');
     headers.append('Access-Control-Allow-Methods' , 'POST, GET, OPTIONS, PUT');
+    console.log("sending parent id as " + parent[0].parentID);
 
     //return this.http.post(`http://172.20.10.2:8080/getKids`,body, {headers: headers1})
   return this.http.post(`/getKidInfoParent`, body, {headers: headers})

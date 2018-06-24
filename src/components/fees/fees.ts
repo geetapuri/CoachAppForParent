@@ -19,15 +19,17 @@ export class FeesComponent {
   public selectedKid;
   public feeList;
   public kidsList;
+  public parent;
 
-  constructor(private springData: GetDataFromSpringProvider,public navCtrl: NavController ) {
+  constructor(private springData: GetDataFromSpringProvider,public navCtrl: NavController, public navParams: NavParams ) {
     console.log('Hello FeesComponent Component');
     this.text = 'Hello World';
+    this.parent = this.navParams.get('parent');
   }
 
   getKids(){
     console.log("in getKids");
-    this.springData.getKidInfoParent().subscribe(
+    this.springData.getKidInfoParent(this.parent).subscribe(
       data => {
 
         this.kidsList= data.kidList;

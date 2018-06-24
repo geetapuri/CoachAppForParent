@@ -27,7 +27,7 @@ export class HomePage implements OnInit{
 
         this.parent= data.parent;
         console.log("parent id received as : " + data.parent[0].parentID);
-        //console.log("size = " + data.length);
+        console.log("parent = " + this.parent[0].parentID);
       },
       err => console.error(err),
       () =>
@@ -45,20 +45,20 @@ export class HomePage implements OnInit{
   }
   goToSchedule(){
 
-    this.navCtrl.push(ScheduleComponent, {});
+    this.navCtrl.push(ScheduleComponent, {parent:this.parent});
   }
   goToAttendance(){
 
-    this.navCtrl.push(AttendanceComponent);
+    this.navCtrl.push(AttendanceComponent, {parent:this.parent});
 
   }
   goToFees(){
 
-    this.navCtrl.push(FeesComponent);
+    this.navCtrl.push(FeesComponent, {parent:this.parent});
   }
   getKids(){
     console.log("in kids");
-    this.navCtrl.push(KidsComponent);
+    this.navCtrl.push(KidsComponent, {parent:this.parent});
   }
 
   goToManageGroups(){

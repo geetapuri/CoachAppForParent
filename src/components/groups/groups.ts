@@ -20,7 +20,7 @@ export class GroupsComponent {
   public groupList;
   myDate: String = new Date().toISOString();
 
-  constructor(private springData: GetDataFromSpringProvider,public navCtrl: NavController) {
+  constructor(private springData: GetDataFromSpringProvider,public navCtrl: NavController, public navParams: NavParams) {
     console.log('Hello GroupsComponent Component');
     this.text = 'Hello World';
 

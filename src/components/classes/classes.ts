@@ -15,7 +15,7 @@ export class ClassesComponent {
 
   text: string;
 
-  constructor(private springData: GetDataFromSpringProvider,public navCtrl: NavController) {
+  constructor(private springData: GetDataFromSpringProvider,public navCtrl: NavController, public navParams: NavParams) {
     console.log('Hello ClassesComponent Component');
     this.text = 'Hello World';
   }
