@@ -299,7 +299,7 @@ export class GetDataFromSpringProvider {
   }
 
   getKidInfoParent(parent){
-    console.log("In get Kids Info");
+    console.log("In get Kids InfoParent");
     let headers = new Headers ({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let body = {
