@@ -39,7 +39,7 @@ export class ScheduleComponent {
   }
 
   getKids(){
-    this.springData.getKidInfoParent(parent).subscribe(
+    this.springData.getKidInfoParent(this.parent).subscribe(
       data => {
 
         this.kidsList= data.kidList;
