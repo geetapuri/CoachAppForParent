@@ -20,17 +20,19 @@ export class EditKidComponent {
   public groupList;
   myDate: String = new Date().toISOString();
   public result;
+   public parent;
 
   constructor(private springData: GetDataFromSpringProvider,public navCtrl: NavController,public navParams: NavParams  ) {
     console.log('Hello EditKidComponent Component');
     this.text = 'Hello World';
     this.kid= this.navParams.get('selectedKid');
+    this.parent = this.navParams.get('parent');
     //this.selectedGroup.groupID= this.kid.groupID;
     let groupName = this.kid.groupName;
     let kidName = this.kid.kidName;
     console.log("kidName = " + kidName);
-    //get groups from DB to choose
-    this.springData.getGroups(this.myDate).subscribe(
+    //get groups - removing this option of editing groups for parents
+    /*this.springData.getGroups(this.myDate).subscribe(
       data => {
 
         this.groupList= data.groupList;
@@ -39,7 +41,7 @@ export class EditKidComponent {
       },
       err => console.error(err),
       () => console.log('getKids completed')
-    );
+    );*/
 
   }
 
@@ -52,13 +54,13 @@ export class EditKidComponent {
   }
 
   saveKidInfo(){
-    console.log("save kid info, selectedGroup ID = " + this.selectedGroup.groupID);
+    //console.log("save kid info, selectedGroup ID = " + this.selectedGroup.groupID);
 
-    this.springData.updateKid(this.kid, this.selectedGroup).subscribe(
+    this.springData.updateKid(this.kid).subscribe(
       data => {
 
         this.result=data.result;
-        this.navCtrl.push(KidsComponent);
+        this.navCtrl.push(KidsComponent, {parent:this.parent});
 
       },
       err => console.error(err),

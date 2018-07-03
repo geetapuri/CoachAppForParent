@@ -314,14 +314,14 @@ export class GetDataFromSpringProvider {
     .map(data => data.json());
   }
 
-  updateKid(kid, selectedGroup){
+  updateKid(kid){
     console.log("In update Kid Info");
     let headers = new Headers ({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let body = {
       'kidID': kid.kidID,
       'kidName': kid.kidName,
-      'groupID': selectedGroup.groupID
+      'groupID':kid.groupID
     }
     headers.append('Access-Control-Allow-Origin' , '*');
     headers.append('Access-Control-Allow-Methods' , 'POST, GET, OPTIONS, PUT');

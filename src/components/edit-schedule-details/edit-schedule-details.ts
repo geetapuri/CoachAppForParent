@@ -30,7 +30,7 @@ export class EditScheduleDetailsComponent {
     this.text = "Hello how r u ?"
     this.item = navParams.get('item');
     this.myDate = this.item.date;
-    alert(" date received as : " + this.item.date);
+    console.log(" date received as : " + this.item.date);
     this.groupName = this.item.groupName;
     this.myTime = this.item.time;
     this.groupID = this.item.groupID;

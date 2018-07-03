@@ -12,7 +12,7 @@ import { EventsComponent } from '../../components/events/events';
 import { ManageClassesComponent } from '../../components/manage-classes/manage-classes';
 import { ClassesComponent} from '../../components/classes/classes';
 import { GroupsComponent} from '../../components/groups/groups';
-
+import { Progress2Component} from '../../components/progress2/progress2';
 
 @Component({
   selector: 'page-home',
@@ -71,7 +71,11 @@ export class HomePage implements OnInit{
   }
   goToEvents(){
     console.log("in events");
-    this.navCtrl.push(EventsComponent);
+    //this.navCtrl.push(EventsComponent);
+  }
+  goToProgress(){
+    console.log("in progress");
+    this.navCtrl.push(Progress2Component);
   }
 
 

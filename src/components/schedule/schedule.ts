@@ -14,6 +14,9 @@ import { EditScheduleDetailsComponent } from '../edit-schedule-details/edit-sche
   templateUrl: 'schedule.html'
 })
 export class ScheduleComponent {
+  ngOnInit(){
+    this.getKids();
+  }
 
   text: string;
   scheduleList = [];
@@ -23,11 +26,14 @@ export class ScheduleComponent {
   public selectedKid;
   public kidsList;
   public parent;
+  public clickedGetSchedule=false;
+  public showKidName;
 
   constructor(private springData: GetDataFromSpringProvider, public navCtrl: NavController, public navParams: NavParams) {
     console.log('Hello ScheduleComponent Component');
     this.text = 'Hello World Schedule Component';
     this.parent = this.navParams.get('parent');
+    console.log("in construct of scheduleComponent, parent ID = " + this.parent[0].parentID);
   }
 
   public onItemSelection(selection){
@@ -43,7 +49,7 @@ export class ScheduleComponent {
       data => {
 
         this.kidsList= data.kidList;
-        this.selectedKid= data.kidList[0];
+        //this.selectedKid= data.kidList[0];
 
       },
       err => console.error(err),
@@ -51,9 +57,11 @@ export class ScheduleComponent {
     )
   }
 
-  getSchedule(){
+  getSchedule(selectedKid){
 
-        this.springData.getScheduleKid(this.selectedKid.kidID).subscribe(
+      this.showKidName=selectedKid.kidName;
+        this.clickedGetSchedule=true;
+        this.springData.getScheduleKid(selectedKid.kidID).subscribe(
           data => {
 
 

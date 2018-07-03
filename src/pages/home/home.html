@@ -11,7 +11,7 @@
 <ion-content padding>
     <ion-grid>
         <ion-row>
-            <ion-col>
+            <ion-col col-auto>
                 <img src="assets/imgs/parent.png" class="logo">
             </ion-col>
             <ion-col>
@@ -25,7 +25,16 @@
                     <ion-col></ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col><button ion-button block>WELCOME {{user}}</button></ion-col>
+                    <ion-col col-auto>
+                        
+                        <button ion-item block >
+                            <ion-avatar item-left>
+                                <img src="assets/imgs/geeta.jpg">
+                            </ion-avatar>
+                            WELCOME {{user}} 
+                        
+                        </button>
+                    </ion-col>
 
                 </ion-row>
 
@@ -52,13 +61,20 @@
         <button ion-button block (click)="goToAttendance()">Attendance</button>
     </div>
 
+    <div padding>
+        <button ion-button block (click)="goToProgress()">Progress</button>
+    </div>
 
+    <div padding>
+        <button ion-button block (click)="goToPerformance()">Performance</button>
+    </div>
 
 
     <div padding>
         <button ion-button block (click)="goToFees()">Fees</button>
     </div>
 
+    
 
 
 

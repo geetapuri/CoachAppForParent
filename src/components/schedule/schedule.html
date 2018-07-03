@@ -2,7 +2,7 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            <img alt="logo" height="40" src="assets/imgs/parent.png"> SCHEDULE
+            <img alt="logo" height="40" src="assets/imgs/parent.png"> CLASS SCHEDULE
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -10,46 +10,100 @@
 <ion-content>
 
 
-    <div padding>
-        <button ion-button (click)="getKids()">Show Kids</button>
+    
 
-    </div>
-
-    <ion-item *ngIf="selectedKid">
-
-        <ion-select [(ngModel)]="selectedKid" (ionChange)=onItemSelection(selectedKid)>
-            <ion-option [value]="item" *ngFor="let item of kidsList">{{item.kidName}} ({{item.kidID}})
-            </ion-option>
-        </ion-select>
+    <ion-item >
+    Click on Kid Name to see the scheduled class list
 
 
     </ion-item>
 
+    <ion-card style="background:light" >
+
+    <ion-grid padding>
+        <ion-row style="background:#488aff">
+            <ion-col col-2>
+                KID ID
+            </ion-col>
+            <ion-col col-10>
+                KID NAME
+            </ion-col>
+            
+        </ion-row>
+    
+        <ion-row *ngFor="let item of kidsList" (click)="getSchedule(item)">
+            <ion-col col-2>
+                
+                
+                        {{ item.kidID }}
+                           
+            </ion-col>
+            <ion-col col-10>  
+                 
+                        {{ item.kidName }}
+                                 
+            </ion-col>
+                
+        </ion-row>
+        
+    </ion-grid>
+
+    
+</ion-card>
 
 
-    <ion-item *ngIf="selectedKid">
 
-        <button ion-button (click)="getSchedule(selectedKid)" icon-right>Show Class Schedule
-              <ion-icon name="calendar"></ion-icon>
-          </button>
-    </ion-item>
+    
 
-    <ion-card *ngFor="let item of scheduleList" (click)="goToEditScheduleDetails(item)">
-        <ion-card-header>
-            DATE {{ item.date }}
-        </ion-card-header>
-        <ion-card-content>
-            TIME {{ item.time }}
-            <ion-buttons start>
-                <button ion-button icon-only>
-                <ion-icon name="calendar" isActive="false"></ion-icon>
-              </button>
-            </ion-buttons>
-        </ion-card-content>
-        <ion-card-content>
-            GROUP {{ item.groupName }} {{item.groupID}}
-        </ion-card-content>
-    </ion-card>
+
+     <ion-card style="background:light" *ngIf="clickedGetSchedule">
+
+    <ion-grid padding>
+        <ion-row style="background:#488aff">
+            <ion-col col-2>
+                DATE
+            </ion-col>
+            <ion-col col-2>
+                TIME
+            </ion-col>
+            <ion-col col-3>
+                KID NAME
+            </ion-col>
+            <ion-col col-5>
+                GROUP GROUPID
+            </ion-col>
+            
+        </ion-row>
+    
+        <ion-row *ngFor="let item of scheduleList" >
+            <ion-col col-2>
+                
+                
+                        {{ item.date }}
+                           
+            </ion-col>
+            <ion-col col-2>  
+                 
+                        {{ item.time }}
+                                 
+            </ion-col>
+
+            <ion-col col-3>
+                {{showKidName}}
+            </ion-col>
+
+            <ion-col col-5>  
+                 
+                        {{ item.groupName }} {{item.groupID}}
+                                 
+            </ion-col>
+                
+        </ion-row>
+        
+    </ion-grid>
+
+    
+</ion-card>
 
     <div padding>
 
